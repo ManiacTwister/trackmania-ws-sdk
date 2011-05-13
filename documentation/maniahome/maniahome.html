@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 13 May 2011 15:41:24 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>ManiaHome (API Documentation &bull; TrackMania Web Services SDK for PHP)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>TrackMania Web Services SDK for PHP</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../maniahome/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../maniahome/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../maniahome\maniahome.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">ManiaHome\ManiaHome</div>
+<div class="location">trackmania-ws.php at line 436</div>
+<h1>Class ManiaHome</h1>
+
+<pre class="tree"><a href="../trackmania/trackmania_webservices.html">TrackMania_WebServices</a><br>    └─<strong>ManiaHome</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>ManiaHome</strong><br>extends <a href="../trackmania/trackmania_webservices.html">TrackMania_WebServices</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>Easy posting of notifications on ManiaHome</p></div>
+
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(string username, string password, string manialink)</p><p class="description"></p></td>
+</tr>
+<tr>
+<td class="type">static  string</td>
+<td class="description"><p class="name"><a href="#bookmarkButton()">bookmarkButton</a>(string manialink, string manialinkName, string manialinkImage)</p><p class="description">Shorthand for displaying the bookmark button.
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#sendNotificationFromManialink()">sendNotificationFromManialink</a>(string message, string link, string iconStyle, mixed iconSubStyle)</p><p class="description">Sends a notification to everyone who bookmarked your ManialinkSee http://fish.stabb.de/styles/ For icon styles and substyles</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#sendPrivateNotificationToPlayer()">sendPrivateNotificationToPlayer</a>(string playerLogin, string message, string link)</p><p class="description">Sends a private notification to the specified player. </p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#sendPublicNotificationToPlayer()">sendPublicNotificationToPlayer</a>(string playerLogin, string message, string link, string iconStyle, mixed iconSubStyle)</p><p class="description">Sends a public notification to the specified player. </p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from TrackMania\TrackMania_WebServices</th></tr>
+<tr><td><a href="../trackmania/trackmania_webservices.html#__construct()">__construct</a>, <a href="../trackmania/trackmania_webservices.html#execute()">execute</a></td></tr></table>
+
+<h2 id="detail_method">Method Detail</h2>
+<div class="location">trackmania-ws.php at line 475</div>
+<h3 id="__construct()">__construct</h3>
+<code class="signature">public  void <strong>__construct</strong>(string username, string password, string manialink)</code>
+<div class="details">
+<p></p><dl>
+<dt>Parameters:</dt>
+<dd>username - API username allowed to post notification for this Manialink</dd>
+<dd>password - API password</dd>
+<dd>manialink - Short Manialink code</dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="location">trackmania-ws.php at line 454</div>
+<h3 id="bookmarkButton()">bookmarkButton</h3>
+<code class="signature">public static  string <strong>bookmarkButton</strong>(string manialink, string manialinkName, string manialinkImage)</code>
+<div class="details">
+<p>Shorthand for displaying the bookmark button.
+It returns the XML code to display the bookmark button in your Manialink.</p><dl>
+<dt>Parameters:</dt>
+<dd>manialink - Your short Manialink (eg. "manialink:home")</dd>
+<dd>manialinkName - Display name of your Manialink with special characters (eg. "$f00Manialink:Home")</dd>
+<dd>manialinkImage - URL of the image of your Manialink (for the Bookmark page on ManiaHome)</dd>
+<dt>Returns:</dt>
+<dd>XML Manialink code of the button</dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="location">trackmania-ws.php at line 493</div>
+<h3 id="sendNotificationFromManialink()">sendNotificationFromManialink</h3>
+<code class="signature">public  void <strong>sendNotificationFromManialink</strong>(string message, string link, string iconStyle, mixed iconSubStyle)</code>
+<div class="details">
+<p>Sends a notification to everyone who bookmarked your Manialink</p><p>See http://fish.stabb.de/styles/ For icon styles and substyles</p><dl>
+<dt>Parameters:</dt>
+<dd>message - Notification message</dd>
+<dd>link - Link of the notification</dd>
+<dd>iconStyle - Icon style</dd>
+<dd>iconStyle - Icon substyle</dd>
+<dt>Throws:</dt>
+<dd><a href="../trackmania/trackmania_exception.html">TrackMania_Exception</a></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="location">trackmania-ws.php at line 545</div>
+<h3 id="sendPrivateNotificationToPlayer()">sendPrivateNotificationToPlayer</h3>
+<code class="signature">public  void <strong>sendPrivateNotificationToPlayer</strong>(string playerLogin, string message, string link)</code>
+<div class="details">
+<p>Sends a private notification to the specified player. Only this player will
+see the notification.</p><p>See http://fish.stabb.de/styles/ For icon styles and substyles</p><dl>
+<dt>Parameters:</dt>
+<dd>playerLogin - Login of the recipient</dd>
+<dd>message - Notification message</dd>
+<dd>link - Link of the notification</dd>
+<dt>Throws:</dt>
+<dd><a href="../trackmania/trackmania_exception.html">TrackMania_Exception</a></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="location">trackmania-ws.php at line 520</div>
+<h3 id="sendPublicNotificationToPlayer()">sendPublicNotificationToPlayer</h3>
+<code class="signature">public  void <strong>sendPublicNotificationToPlayer</strong>(string playerLogin, string message, string link, string iconStyle, mixed iconSubStyle)</code>
+<div class="details">
+<p>Sends a public notification to the specified player. His buddies will see
+that notification (unless he changed his privacy settings)</p><p>See http://fish.stabb.de/styles/ For icon styles and substyles</p><dl>
+<dt>Parameters:</dt>
+<dd>playerLogin - Login of the recipient</dd>
+<dd>message - Notification message</dd>
+<dd>link - Link of the notification</dd>
+<dd>iconStyle - Icon style</dd>
+<dd>iconStyle - Icon substyle</dd>
+<dt>Throws:</dt>
+<dd><a href="../trackmania/trackmania_exception.html">TrackMania_Exception</a></dd>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>TrackMania Web Services SDK for PHP</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../maniahome/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../maniahome/package-tree.html">Tree</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../maniahome\maniahome.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>
