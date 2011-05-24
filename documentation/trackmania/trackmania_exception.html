@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 13 May 2011 15:41:24 +0000">
+<meta name="when" content="Tue, 24 May 2011 15:21:50 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -40,7 +40,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">TrackMania\TrackMania_Exception</div>
-<div class="location">trackmania-ws.php at line 790</div>
+<div class="location">trackmania-ws.php at line 814</div>
 <h1>Class TrackMania_Exception</h1>
 
 <pre class="tree">Exception<br> └─<strong>TrackMania_Exception</strong><br /></pre>
@@ -52,6 +52,47 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </p>
 
 <div class="comment" id="overview_description"><p>Exception thrown by the services when something goes wrong</p></div>
+
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(mixed message, mixed code, mixed statusCode, mixed statusMessage)</p></td>
+</tr>
+<tr>
+<td class="type"> int</td>
+<td class="description"><p class="name"><a href="#getHTTPStatusCode()">getHTTPStatusCode</a>()</p><p class="description">The HTTP status code returned in case of an error, eg. </p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getHTTPStatusMessage()">getHTTPStatusMessage</a>()</p><p class="description">The HTTP status message returned in case of an error, eg. </p></td>
+</tr>
+</table>
+
+<h2 id="detail_method">Method Detail</h2>
+<div class="location">trackmania-ws.php at line 820</div>
+<h3 id="__construct()">__construct</h3>
+<code class="signature">public  void <strong>__construct</strong>(mixed message, mixed code, mixed statusCode, mixed statusMessage)</code>
+<div class="details">
+</div>
+
+<hr>
+
+<div class="location">trackmania-ws.php at line 832</div>
+<h3 id="getHTTPStatusCode()">getHTTPStatusCode</h3>
+<code class="signature">public  int <strong>getHTTPStatusCode</strong>()</code>
+<div class="details">
+<p>The HTTP status code returned in case of an error, eg. 404</p></div>
+
+<hr>
+
+<div class="location">trackmania-ws.php at line 841</div>
+<h3 id="getHTTPStatusMessage()">getHTTPStatusMessage</h3>
+<code class="signature">public  string <strong>getHTTPStatusMessage</strong>()</code>
+<div class="details">
+<p>The HTTP status message returned in case of an error, eg. "Not Found"</p></div>
 
 <hr>
 
