@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(__FILE__).'/../src/trackmania-ws.php';
 
 try
@@ -12,7 +11,11 @@ try
 }
 catch(Exception $e)
 {
-	echo sprintf('Error: %s'."\n", $e->getMessage());
+	printf('HTTP Response: %d %s', $e->getHTTPStatusCode(),
+		$e->getHTTPStatusMessage());
+	echo "\n";
+	printf('API Response: %s (%d)', $e->getMessage(), $e->getCode());
+	echo "\n";
 }
-
+echo "\n";
 ?>

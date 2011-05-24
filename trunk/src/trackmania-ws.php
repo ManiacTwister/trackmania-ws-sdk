@@ -1,6 +1,6 @@
 <?php
 /**
- * TrackMania Web Services SDK for PHP 0.5
+ * TrackMania Web Services SDK for PHP v0.6
  *
  * @copyright   Copyright (c) 2009-2011 NADEO (http://www.nadeo.com)
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL License 3
@@ -15,35 +15,36 @@
  */
 class TrackMania_Foobar extends TrackMania_WebServices
 {
+
 	/**
 	 * Gets a dummy object from the API. 
 	 * Returned data is:
 	 * <code>
 	 * Array
-	 *(
+	 * (
 	 *    [] => GET
 	 *    [] => Object
-	 *	(
-	 *	    [anInt] => 1337
-	 *	    [aString] => quarante-deux
-	 *	    [anObject] => Object
-	 *		(
-	 *		    [someBlabla] => Array
-	 *			(
-	 *			    [] => Hello world
-	 *			    [] => 1337
-	 *			)
-	 *		    [foo] => bar
-	 *		)
-	 *	    [anArray] => Array
-	 *		(
-	 *		    [] => un
-	 *		    [] => deux
-	 *		    [] => trois
-	 *		    [] => 4
-	 *		)
-	 *	)
-	 *)
+	 * 	(
+	 * 	    [anInt] => 1337
+	 * 	    [aString] => quarante-deux
+	 * 	    [anObject] => Object
+	 * 		(
+	 * 		    [someBlabla] => Array
+	 * 			(
+	 * 			    [] => Hello world
+	 * 			    [] => 1337
+	 * 			)
+	 * 		    [foo] => bar
+	 * 		)
+	 * 	    [anArray] => Array
+	 * 		(
+	 * 		    [] => un
+	 * 		    [] => deux
+	 * 		    [] => trois
+	 * 		    [] => 4
+	 * 		)
+	 * 	)
+	 * )
 	 * </code>
 	 * 
 	 * @return array
@@ -59,10 +60,10 @@ class TrackMania_Foobar extends TrackMania_WebServices
 	 * in the response:
 	 * <code>
 	 * Array
-	 *(
+	 * (
 	 *    [] => POST
 	 *    [] => *the data you posted*
-	 *)
+	 * )
 	 * </code>
 	 * 
 	 * @param mixed $data Any data
@@ -111,12 +112,12 @@ class TrackMania_Manialinks extends TrackMania_WebServices
 	 * Retrieves information about a Short Manialink code. Response structure is:
 	 * <code>
 	 * Object
-	 *(
+	 * (
 	 *    [code] => example_manialink
 	 *    [url] => http://example.com/
 	 *    [login] => player_login
 	 *    [coppersCost] => 0
-	 *)
+	 * )
 	 * </code>
 	 * 
 	 * @param string $code Short Manialink code
@@ -146,9 +147,12 @@ class TrackMania_MultiplayerRankings extends TrackMania_WebServices
 	 * @return object 
 	 * @throws TrackMania_Exception
 	 */
-	function getPlayerRanking($path = 'World', $environment = 'Merge', $offset = 0, $length = 10)
+	function getPlayerRanking($path = 'World', $environment = 'Merge', $offset = 0,
+		$length = 10)
 	{
-		return $this->execute('GET', '/tmf/rankings/multiplayer/players/%s/%s/?offset=%s&length=%s', array($path, $environment, $offset, $length));
+		return $this->execute('GET',
+			'/tmf/rankings/multiplayer/players/%s/%s/?offset=%s&length=%s',
+			array($path, $environment, $offset, $length));
 	}
 
 	/**
@@ -160,7 +164,9 @@ class TrackMania_MultiplayerRankings extends TrackMania_WebServices
 	 */
 	function getZoneRanking($path = 'World', $offset = 0, $length = 10)
 	{
-		return $this->execute('GET', '/tmf/rankings/multiplayer/zones/%s/?offset=%s&length=%s', array($path, $offset, $length));
+		return $this->execute('GET',
+			'/tmf/rankings/multiplayer/zones/%s/?offset=%s&length=%s',
+			array($path, $offset, $length));
 	}
 
 }
@@ -218,7 +224,8 @@ class TrackMania_Players extends TrackMania_WebServices
 	 */
 	function getMultiplayerRanking($login)
 	{
-		return $this->execute('GET', '/tmf/players/%s/rankings/multiplayer/', array($login));
+		return $this->execute('GET', '/tmf/players/%s/rankings/multiplayer/',
+			array($login));
 	}
 
 	/**
@@ -229,7 +236,8 @@ class TrackMania_Players extends TrackMania_WebServices
 	 */
 	function getMultiplayerRankingForEnvironment($login, $environment)
 	{
-		return $this->execute('GET', '/tmf/players/%s/rankings/multiplayer/%s/', array($login, $environment));
+		return $this->execute('GET', '/tmf/players/%s/rankings/multiplayer/%s/',
+			array($login, $environment));
 	}
 
 	/**
@@ -300,7 +308,8 @@ class TrackMania_SoloRankings extends TrackMania_WebServices
 	 */
 	function getPlayerWorldRanking($offset = 0, $length = 10)
 	{
-		return $this->execute('GET', '/tmf/rankings/solo/players/?offset=%s&length=%s', array($offset, $length));
+		return $this->execute('GET',
+			'/tmf/rankings/solo/players/?offset=%s&length=%s', array($offset, $length));
 	}
 
 	/**
@@ -312,7 +321,9 @@ class TrackMania_SoloRankings extends TrackMania_WebServices
 	 */
 	function getPlayerRanking($path, $offset = 0, $length = 10)
 	{
-		return $this->execute('GET', '/tmf/rankings/solo/players/%s/?offset=%s&length=%s', array($path, $offset, $length));
+		return $this->execute('GET',
+			'/tmf/rankings/solo/players/%s/?offset=%s&length=%s',
+			array($path, $offset, $length));
 	}
 
 	/**
@@ -322,9 +333,12 @@ class TrackMania_SoloRankings extends TrackMania_WebServices
 	 * @return object 
 	 * @throws TrackMania_Exception
 	 */
-	function getPlayerWorldRankingForChallenge($challengeUID, $offset = 0, $length = 10)
+	function getPlayerWorldRankingForChallenge($challengeUID, $offset = 0,
+		$length = 10)
 	{
-		return $this->execute('GET', '/tmf/rankings/solo/challenges/%s/players/?offset=%s&length=%s', array($challengeUID, $offset, $length));
+		return $this->execute('GET',
+			'/tmf/rankings/solo/challenges/%s/players/?offset=%s&length=%s',
+			array($challengeUID, $offset, $length));
 	}
 
 	/**
@@ -334,9 +348,12 @@ class TrackMania_SoloRankings extends TrackMania_WebServices
 	 * @return object 
 	 * @throws TrackMania_Exception
 	 */
-	function getPlayerRankingForChallenge($challengeUID, $path, $offset = 0, $length = 10)
+	function getPlayerRankingForChallenge($challengeUID, $path, $offset = 0,
+		$length = 10)
 	{
-		return $this->execute('GET', '/tmf/rankings/solo/challenges/%s/players/%s/?offset=%s&length=%s', array($challengeUID, $path, $offset, $length));
+		return $this->execute('GET',
+			'/tmf/rankings/solo/challenges/%s/players/%s/?offset=%s&length=%s',
+			array($challengeUID, $path, $offset, $length));
 	}
 
 }
@@ -382,7 +399,9 @@ class TrackMania_Zones extends TrackMania_WebServices
 	 */
 	function getAll($offset = 0, $length = 10, $sort = '', $order = '')
 	{
-		return $this->execute('GET', '/tmf/zones/all/?offset=%s&length=%s&sort=%s&order=%s', array($offset, $length, $sort, $order));
+		return $this->execute('GET',
+			'/tmf/zones/all/?offset=%s&length=%s&sort=%s&order=%s',
+			array($offset, $length, $sort, $order));
 	}
 
 	/**
@@ -397,7 +416,9 @@ class TrackMania_Zones extends TrackMania_WebServices
 	 */
 	function getChildren($id, $offset = 0, $length = 10, $sort = '', $order = '')
 	{
-		return $this->execute('GET', '/tmf/zones/id/%s/children/?offset=%s&length=%s&sort=%s&order=%s', array($id, $offset, $length, $sort, $order));
+		return $this->execute('GET',
+			'/tmf/zones/id/%s/children/?offset=%s&length=%s&sort=%s&order=%s',
+			array($id, $offset, $length, $sort, $order));
 	}
 
 	/**
@@ -410,9 +431,12 @@ class TrackMania_Zones extends TrackMania_WebServices
 	 * @return array Array of zones
 	 * @throws TrackMania_Exception 
 	 */
-	function getChildrenByPath($path, $offset = 0, $length = 10, $sort = '', $order = '')
+	function getChildrenByPath($path, $offset = 0, $length = 10, $sort = '',
+		$order = '')
 	{
-		return $this->execute('GET', '/tmf/zones/path/%s/children/?offset=%s&length=%s&sort=%s&order=%s', array($path, $offset, $length, $sort, $order));
+		return $this->execute('GET',
+			'/tmf/zones/path/%s/children/?offset=%s&length=%s&sort=%s&order=%s',
+			array($path, $offset, $length, $sort, $order));
 	}
 
 	/**
@@ -451,7 +475,8 @@ class ManiaHome extends TrackMania_WebServices
 	 * @param string $manialinkImage URL of the image of your Manialink (for the Bookmark page on ManiaHome)
 	 * @return string XML Manialink code of the button
 	 */
-	public static function bookmarkButton($manialink, $manialinkName=null, $manialinkImage=null)
+	public static function bookmarkButton($manialink, $manialinkName=null,
+		$manialinkImage=null)
 	{
 		$params['url'] = $manialink;
 		if($manialinkName)
@@ -490,7 +515,8 @@ class ManiaHome extends TrackMania_WebServices
 	 * @return void
 	 * @throws TrackMania_Exception
 	 */
-	public function sendNotificationFromManialink($message, $link=null, $iconStyle = null, $iconSubStyle = null)
+	public function sendNotificationFromManialink($message, $link=null,
+		$iconStyle = null, $iconSubStyle = null)
 	{
 		$data = array(
 			'senderName' => $this->manialink,
@@ -517,7 +543,8 @@ class ManiaHome extends TrackMania_WebServices
 	 * @return void
 	 * @throws TrackMania_Exception
 	 */
-	public function sendPublicNotificationToPlayer($playerLogin, $message, $link=null, $iconStyle = null, $iconSubStyle = null)
+	public function sendPublicNotificationToPlayer($playerLogin, $message,
+		$link=null, $iconStyle = null, $iconSubStyle = null)
 	{
 		$data = array(
 			'senderName' => $this->manialink,
@@ -527,7 +554,8 @@ class ManiaHome extends TrackMania_WebServices
 			'iconSubStyle' => $iconSubStyle,
 			'type' => $type,
 		);
-		return $this->execute('POST', '/maniahome/notification/%s/', array($playerLogin, $data));
+		return $this->execute('POST', '/maniahome/notification/%s/',
+			array($playerLogin, $data));
 	}
 
 	/**
@@ -542,14 +570,16 @@ class ManiaHome extends TrackMania_WebServices
 	 * @return void
 	 * @throws TrackMania_Exception
 	 */
-	public function sendPrivateNotificationToPlayer($playerLogin, $message, $link=null)
+	public function sendPrivateNotificationToPlayer($playerLogin, $message,
+		$link=null)
 	{
 		$data = array(
 			'senderName' => $this->manialink,
 			'message' => $message,
 			'link' => $link,
 		);
-		return $this->execute('POST', '/maniahome/notification/%s/private/', array($playerLogin, $data));
+		return $this->execute('POST', '/maniahome/notification/%s/private/',
+			array($playerLogin, $data));
 	}
 
 }
@@ -561,8 +591,44 @@ class ManiaHome extends TrackMania_WebServices
  */
 abstract class TrackMania_WebServices
 {
-	const VERSION = '0.5';
-	
+	const VERSION = '0.6';
+
+	private static $HTTPStatusCodes = array(
+		100 => 'Continue',
+		200 => 'Sucess',
+		201 => 'Created',
+		202 => 'Accepted',
+		203 => 'Non-Authoritative Information',
+		204 => 'No Content',
+		205 => 'Reset Content',
+		206 => 'Partial Content',
+		300 => 'Multiple Choices',
+		301 => 'Moved Permanently',
+		302 => 'Found',
+		303 => 'See Other',
+		304 => 'Not Modified',
+		305 => 'Use Proxy',
+		307 => 'Temporary Redirect',
+		400 => 'Bad Request',
+		401 => 'Unauthorized',
+		402 => 'Payment Required',
+		403 => 'Forbidden',
+		404 => 'Not Found',
+		405 => 'Method Not Allowed',
+		406 => 'Not Acceptable',
+		409 => 'Conflict',
+		410 => 'Gone',
+		411 => 'Length Required',
+		412 => 'Precondition Failed',
+		413 => 'Request Entity Too Large',
+		414 => 'Request-URI Too Long',
+		415 => 'Unsupported Media Type',
+		416 => 'Requested Range Not Satisfiable',
+		417 => 'Expectation Failed',
+		500 => 'Internal Server Error',
+		501 => 'Not Implemented',
+		503 => 'Service Unavailable',
+	);
 	/**
 	 * URL of the Web Services API
 	 * 
@@ -748,35 +814,36 @@ abstract class TrackMania_WebServices
 		}
 		else
 		{
+			$message = '';
+			$code = 0;
+			$statusCode = $responseInfo['http_code'];
+			$statusMessage = null;
+
+			if(array_key_exists($statusCode, self::$HTTPStatusCodes))
+			{
+				$statusMessage = self::$HTTPStatusCodes[$statusCode];
+			}
+
 			if($responseBody)
 			{
 				$responseBody = json_decode($responseBody);
 				if(function_exists('json_last_error') && json_last_error() == JSON_ERROR_NONE)
 				{
-					if(is_object($responseBody) && property_exists($responseBody, 'message'))
+					if(is_object($responseBody))
 					{
-						$message = $responseBody->message;
+						if(property_exists($responseBody, 'message'))
+						{
+							$message = $responseBody->message;
+						}
+						if(property_exists($responseBody, 'code'))
+						{
+							$code = $responseBody->message;
+						}
 					}
 				}
 			}
-			if(!isset($message))
-			{
-				switch($responseInfo['http_code'])
-				{
-					case 400: $message = 'Bad request';
-						break;
-					case 401: $message = 'Unauthorized';
-						break;
-					case 403: $message = 'Forbidden';
-						break;
-					case 404: $message = 'Not found';
-						break;
-					case 500: $message = 'Internal server error';
-						break;
-					default: $message = 'API error. Check the HTTP error code for more information.';
-				}
-			}
-			throw new TrackMania_Exception($message, $responseInfo['http_code']);
+
+			throw new TrackMania_Exception($message, $code, $statusCode, $statusMessage);
 		}
 	}
 
@@ -789,7 +856,36 @@ abstract class TrackMania_WebServices
  */
 class TrackMania_Exception extends Exception
 {
-	// TODO Add two properties so you can specify in the exception code+message for both the header and the response body
+
+	protected $HTTPStatusCode;
+	protected $HTTPStatusMessage;
+
+	function __construct($message, $code, $statusCode, $statusMessage)
+	{
+		parent::__construct($message, $code);
+
+		$this->HTTPStatusCode = $statusCode;
+		$this->HTTPStatusMessage = $statusMessage;
+	}
+
+	/**
+	 * The HTTP status code returned in case of an error, eg. 404
+	 * @return int
+	 */
+	function getHTTPStatusCode()
+	{
+		return $this->HTTPStatusCode;
+	}
+
+	/**
+	 * The HTTP status message returned in case of an error, eg. "Not Found"
+	 * @return string
+	 */
+	function getHTTPStatusMessage()
+	{
+		return $this->HTTPStatusMessage;
+	}
+
 }
 
 ?>
