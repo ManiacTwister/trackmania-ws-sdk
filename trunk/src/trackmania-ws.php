@@ -1,6 +1,6 @@
 <?php
 /**
- * TrackMania Web Services SDK for PHP v0.6
+ * TrackMania Web Services SDK for PHP v0.7
  *
  * @copyright   Copyright (c) 2009-2011 NADEO (http://www.nadeo.com)
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL License 3
@@ -455,6 +455,7 @@ class TrackMania_Zones extends TrackMania_WebServices
 /**
  * Easy posting of notifications on ManiaHome
  * 
+ * @see http://forum.maniaplanet.com/viewtopic.php?f=42&t=1005
  * @package ManiaHome
  */
 class ManiaHome extends TrackMania_WebServices
@@ -470,6 +471,7 @@ class ManiaHome extends TrackMania_WebServices
 	 * Shorthand for displaying the bookmark button.
 	 * It returns the XML code to display the bookmark button in your Manialink.
 	 * 
+	 * @see http://forum.maniaplanet.com/viewtopic.php?f=42&t=1037
 	 * @param string $manialink Your short Manialink (eg. "manialink:home")
 	 * @param string $manialinkName Display name of your Manialink with special characters (eg. "$f00Manialink:Home")
 	 * @param string $manialinkImage URL of the image of your Manialink (for the Bookmark page on ManiaHome)
@@ -501,19 +503,19 @@ class ManiaHome extends TrackMania_WebServices
 	{
 		parent::__construct($username, $password);
 		$this->manialink = $manialink;
+		$this->throwExceptions = false;
 	}
 
 	/**
-	 * Sends a notification to everyone who bookmarked your Manialink
-	 * 
-	 * See http://fish.stabb.de/styles/ For icon styles and substyles
+	 * Sends a notification to everyone who bookmarked your Manialink.
+	 * See http://fish.stabb.de/styles/ For icon styles and substyles.
+	 * It does not throw exceptions!
 	 * 
 	 * @param string $message Notification message
 	 * @param string $link Link of the notification
 	 * @param string $iconStyle Icon style
 	 * @param string $iconStyle Icon substyle
-	 * @return void
-	 * @throws TrackMania_Exception
+	 * @return bool Success
 	 */
 	public function sendNotificationFromManialink($message, $link=null,
 		$iconStyle = null, $iconSubStyle = null)
@@ -526,72 +528,72 @@ class ManiaHome extends TrackMania_WebServices
 			'iconStyle' => $iconStyle,
 			'iconSubStyle' => $iconSubStyle,
 		);
-		return $this->execute('POST', '/maniahome/notification/', array($data));
+		return $this->execute('POST', '/maniahome/notification/', array($data)) !== false;
 	}
 
 	/**
 	 * Sends a public notification to the specified player. His buddies will see
-	 * that notification (unless he changed his privacy settings)
-	 * 
-	 * See http://fish.stabb.de/styles/ For icon styles and substyles
+	 * that notification (unless he changed his privacy settings).
+	 * See http://fish.stabb.de/styles/ For icon styles and substyles.
+	 * It does not throw exceptions!
 	 * 
 	 * @param string $playerLogin Login of the recipient
 	 * @param string $message Notification message
 	 * @param string $link Link of the notification
 	 * @param string $iconStyle Icon style
 	 * @param string $iconStyle Icon substyle
-	 * @return void
-	 * @throws TrackMania_Exception
+	 * @return bool Success
 	 */
 	public function sendPublicNotificationToPlayer($playerLogin, $message,
 		$link=null, $iconStyle = null, $iconSubStyle = null)
 	{
 		$data = array(
 			'senderName' => $this->manialink,
+			'receiverName' => $playerLogin,
 			'message' => $message,
 			'link' => $link,
 			'iconStyle' => $iconStyle,
 			'iconSubStyle' => $iconSubStyle,
-			'type' => $type,
 		);
 		return $this->execute('POST', '/maniahome/notification/%s/',
-			array($playerLogin, $data));
+			array($playerLogin, $data)) !== false;
 	}
 
 	/**
 	 * Sends a private notification to the specified player. Only this player will
 	 * see the notification.
-	 * 
 	 * See http://fish.stabb.de/styles/ For icon styles and substyles
+	 * It does not throw exceptions!
 	 * 
 	 * @param string $playerLogin Login of the recipient
 	 * @param string $message Notification message
 	 * @param string $link Link of the notification
-	 * @return void
-	 * @throws TrackMania_Exception
+	 * @return bool Success
 	 */
 	public function sendPrivateNotificationToPlayer($playerLogin, $message,
 		$link=null)
 	{
 		$data = array(
 			'senderName' => $this->manialink,
+			'receiverName' => $playerLogin,
 			'message' => $message,
 			'link' => $link,
 		);
 		return $this->execute('POST', '/maniahome/notification/%s/private/',
-			array($playerLogin, $data));
+			array($playerLogin, $data)) !== false;
 	}
 
 }
 
 /**
- * REST client used to execute HTTP requests on the TrackMania Web Services API. Service classes of the SDK extends this base class.
+ * REST client used to execute HTTP requests on the TrackMania Web Services API. 
+ * Service classes of the SDK extends this base class.
  * 
  * @package TrackMania
  */
 abstract class TrackMania_WebServices
 {
-	const VERSION = '0.6';
+	const VERSION = '0.7';
 
 	private static $HTTPStatusCodes = array(
 		100 => 'Continue',
@@ -647,6 +649,18 @@ abstract class TrackMania_WebServices
 	 * @var string
 	 */
 	protected $password;
+	/**
+	 * Whether to throw exceptions or not. Default is true except in the ManiaHome class.
+	 * 
+	 * @var bool
+	 */
+	protected $throwExceptions = true;
+	/**
+	 * Last exception if throwExceptions is set to false
+	 * 
+	 * @var TrackMania_Exception
+	 */
+	public $lastException;
 
 	/**
 	 * Default constructor. Children classes should, if they need to override it,
@@ -699,6 +713,8 @@ abstract class TrackMania_WebServices
 	 */
 	protected function execute($method, $ressource, array $params = array())
 	{
+		$this->lastException = null;
+
 		$url = $this->APIURL.$ressource;
 
 		// If we need a request body, it's the last element of the params array
@@ -843,7 +859,17 @@ abstract class TrackMania_WebServices
 				}
 			}
 
-			throw new TrackMania_Exception($message, $code, $statusCode, $statusMessage);
+			$exception = new TrackMania_Exception($message, $code, $statusCode, $statusMessage);
+
+			if($this->throwExceptions)
+			{
+				throw $exception;
+			}
+			else
+			{
+				$this->lastException = $exception;
+				return false;
+			}
 		}
 	}
 
