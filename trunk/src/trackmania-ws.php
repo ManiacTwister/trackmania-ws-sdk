@@ -843,7 +843,7 @@ abstract class TrackMania_WebServices
 			if($responseBody)
 			{
 				$responseBody = json_decode($responseBody);
-				if(function_exists('json_last_error') && json_last_error() == JSON_ERROR_NONE)
+				if(!function_exists('json_last_error') || json_last_error() == JSON_ERROR_NONE)
 				{
 					if(is_object($responseBody))
 					{
