@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 24 May 2011 15:21:49 +0000">
+<meta name="when" content="Fri, 10 Jun 2011 12:14:36 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -40,7 +40,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">ManiaHome\ManiaHome</div>
-<div class="location">trackmania-ws.php at line 456</div>
+<div class="location">trackmania-ws.php at line 457</div>
 <h1>Class ManiaHome</h1>
 
 <pre class="tree"><a href="../trackmania/trackmania_webservices.html">TrackMania_WebServices</a><br>    └─<strong>ManiaHome</strong><br /></pre>
@@ -53,7 +53,15 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <div class="comment" id="overview_description"><p>Easy posting of notifications on ManiaHome</p></div>
 
+<dl>
+<dt>See Also:</dt>
+<dd><a href="http://forum.maniaplanet.com/viewtopic.php?f=42&t=1005">http://forum.maniaplanet.com/viewtopic.php?f=42&t=1005</a></dd>
+</dl>
 <hr>
+
+<table class="inherit">
+<tr><th colspan="2">Fields inherited from TrackMania\TrackMania_WebServices</th></tr>
+<tr><td><a href="../trackmania/trackmania_webservices.html#lastException">lastException</a></td></tr></table>
 
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
@@ -67,15 +75,16 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </p></td>
 </tr>
 <tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#sendNotificationFromManialink()">sendNotificationFromManialink</a>(string message, string link, string iconStyle, mixed iconSubStyle)</p><p class="description">Sends a notification to everyone who bookmarked your ManialinkSee http://fish.stabb.de/styles/ For icon styles and substyles</p></td>
+<td class="type"> bool</td>
+<td class="description"><p class="name"><a href="#sendNotificationFromManialink()">sendNotificationFromManialink</a>(string message, string link, string iconStyle, mixed iconSubStyle)</p><p class="description">Sends a notification to everyone who bookmarked your Manialink.
+</p></td>
 </tr>
 <tr>
-<td class="type"> void</td>
+<td class="type"> bool</td>
 <td class="description"><p class="name"><a href="#sendPrivateNotificationToPlayer()">sendPrivateNotificationToPlayer</a>(string playerLogin, string message, string link)</p><p class="description">Sends a private notification to the specified player. </p></td>
 </tr>
 <tr>
-<td class="type"> void</td>
+<td class="type"> bool</td>
 <td class="description"><p class="name"><a href="#sendPublicNotificationToPlayer()">sendPublicNotificationToPlayer</a>(string playerLogin, string message, string link, string iconStyle, mixed iconSubStyle)</p><p class="description">Sends a public notification to the specified player. </p></td>
 </tr>
 </table>
@@ -85,7 +94,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <tr><td><a href="../trackmania/trackmania_webservices.html#__construct()">__construct</a>, <a href="../trackmania/trackmania_webservices.html#execute()">execute</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<div class="location">trackmania-ws.php at line 495</div>
+<div class="location">trackmania-ws.php at line 497</div>
 <h3 id="__construct()">__construct</h3>
 <code class="signature">public  void <strong>__construct</strong>(string username, string password, string manialink)</code>
 <div class="details">
@@ -99,12 +108,14 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <hr>
 
-<div class="location">trackmania-ws.php at line 474</div>
+<div class="location">trackmania-ws.php at line 476</div>
 <h3 id="bookmarkButton()">bookmarkButton</h3>
 <code class="signature">public static  string <strong>bookmarkButton</strong>(string manialink, string manialinkName, string manialinkImage)</code>
 <div class="details">
 <p>Shorthand for displaying the bookmark button.
 It returns the XML code to display the bookmark button in your Manialink.</p><dl>
+<dt>See Also:</dt>
+<dd><a href="http://forum.maniaplanet.com/viewtopic.php?f=42&t=1037">http://forum.maniaplanet.com/viewtopic.php?f=42&t=1037</a></dd>
 <dt>Parameters:</dt>
 <dd>manialink - Your short Manialink (eg. "manialink:home")</dd>
 <dd>manialinkName - Display name of your Manialink with special characters (eg. "$f00Manialink:Home")</dd>
@@ -116,18 +127,20 @@ It returns the XML code to display the bookmark button in your Manialink.</p><dl
 
 <hr>
 
-<div class="location">trackmania-ws.php at line 513</div>
+<div class="location">trackmania-ws.php at line 515</div>
 <h3 id="sendNotificationFromManialink()">sendNotificationFromManialink</h3>
-<code class="signature">public  void <strong>sendNotificationFromManialink</strong>(string message, string link, string iconStyle, mixed iconSubStyle)</code>
+<code class="signature">public  bool <strong>sendNotificationFromManialink</strong>(string message, string link, string iconStyle, mixed iconSubStyle)</code>
 <div class="details">
-<p>Sends a notification to everyone who bookmarked your Manialink</p><p>See http://fish.stabb.de/styles/ For icon styles and substyles</p><dl>
+<p>Sends a notification to everyone who bookmarked your Manialink.
+See http://fish.stabb.de/styles/ For icon styles and substyles.
+It does not throw exceptions!</p><dl>
 <dt>Parameters:</dt>
 <dd>message - Notification message</dd>
 <dd>link - Link of the notification</dd>
 <dd>iconStyle - Icon style</dd>
 <dd>iconStyle - Icon substyle</dd>
-<dt>Throws:</dt>
-<dd><a href="../trackmania/trackmania_exception.html">TrackMania_Exception</a></dd>
+<dt>Returns:</dt>
+<dd>Success</dd>
 </dl>
 </div>
 
@@ -135,35 +148,39 @@ It returns the XML code to display the bookmark button in your Manialink.</p><dl
 
 <div class="location">trackmania-ws.php at line 566</div>
 <h3 id="sendPrivateNotificationToPlayer()">sendPrivateNotificationToPlayer</h3>
-<code class="signature">public  void <strong>sendPrivateNotificationToPlayer</strong>(string playerLogin, string message, string link)</code>
+<code class="signature">public  bool <strong>sendPrivateNotificationToPlayer</strong>(string playerLogin, string message, string link)</code>
 <div class="details">
 <p>Sends a private notification to the specified player. Only this player will
-see the notification.</p><p>See http://fish.stabb.de/styles/ For icon styles and substyles</p><dl>
+see the notification.
+See http://fish.stabb.de/styles/ For icon styles and substyles
+It does not throw exceptions!</p><dl>
 <dt>Parameters:</dt>
 <dd>playerLogin - Login of the recipient</dd>
 <dd>message - Notification message</dd>
 <dd>link - Link of the notification</dd>
-<dt>Throws:</dt>
-<dd><a href="../trackmania/trackmania_exception.html">TrackMania_Exception</a></dd>
+<dt>Returns:</dt>
+<dd>Success</dd>
 </dl>
 </div>
 
 <hr>
 
-<div class="location">trackmania-ws.php at line 540</div>
+<div class="location">trackmania-ws.php at line 541</div>
 <h3 id="sendPublicNotificationToPlayer()">sendPublicNotificationToPlayer</h3>
-<code class="signature">public  void <strong>sendPublicNotificationToPlayer</strong>(string playerLogin, string message, string link, string iconStyle, mixed iconSubStyle)</code>
+<code class="signature">public  bool <strong>sendPublicNotificationToPlayer</strong>(string playerLogin, string message, string link, string iconStyle, mixed iconSubStyle)</code>
 <div class="details">
 <p>Sends a public notification to the specified player. His buddies will see
-that notification (unless he changed his privacy settings)</p><p>See http://fish.stabb.de/styles/ For icon styles and substyles</p><dl>
+that notification (unless he changed his privacy settings).
+See http://fish.stabb.de/styles/ For icon styles and substyles.
+It does not throw exceptions!</p><dl>
 <dt>Parameters:</dt>
 <dd>playerLogin - Login of the recipient</dd>
 <dd>message - Notification message</dd>
 <dd>link - Link of the notification</dd>
 <dd>iconStyle - Icon style</dd>
 <dd>iconStyle - Icon substyle</dd>
-<dt>Throws:</dt>
-<dd><a href="../trackmania/trackmania_exception.html">TrackMania_Exception</a></dd>
+<dt>Returns:</dt>
+<dd>Success</dd>
 </dl>
 </div>
 
