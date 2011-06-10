@@ -1,14 +1,19 @@
 <?php
+/**
+ * TrackMania Web Services SDK for PHP - Examples
+ *
+ * @copyright   Copyright (c) 2009-2011 NADEO (http://www.nadeo.com)
+ * @license     http://www.gnu.org/licenses/lgpl.html LGPL License 3
+ * @author      $Author$:
+ * @date        $Date$:
+ */
 require_once dirname(__FILE__).'/../src/trackmania-ws.php';
 
-// Uncomment the lines below, and set your credentials
-// $username = 'your_api_username';
-// $password = 'your_api_password';
+echo "Enter your API username:\n";
+$username = trim(fgets(STDIN));
 
-if(!isset($username) || !isset($password))
-{
-	die('FATAL ERROR: Open "player.php" and set the "$username" and "$password" variables.'."\n");
-}
+echo "Enter your API password:\n";
+$password = trim(fgets(STDIN));
 
 $players = new TrackMania_Players($username, $password);
 
