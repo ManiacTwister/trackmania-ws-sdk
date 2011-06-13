@@ -1,6 +1,6 @@
 <?php
 /**
- * TrackMania Web Services SDK for PHP v0.7
+ * TrackMania Web Services SDK for PHP v1.0
  *
  * @copyright   Copyright (c) 2009-2011 NADEO (http://www.nadeo.com)
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL License 3
@@ -593,7 +593,7 @@ class ManiaHome extends TrackMania_WebServices
  */
 abstract class TrackMania_WebServices
 {
-	const VERSION = '0.7';
+	const VERSION = '1.0';
 
 	private static $HTTPStatusCodes = array(
 		100 => 'Continue',
