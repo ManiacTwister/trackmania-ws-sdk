@@ -210,14 +210,6 @@ class TrackMania_Players extends TrackMania_WebServices
 	}
 
 	/**
-	 * @deprecated
-	 */
-	function isOnline($login)
-	{
-		return null;
-	}
-
-	/**
 	 * @param string $login Login of a TMF player
 	 * @return object
 	 * @throws TrackMania_Exception  
