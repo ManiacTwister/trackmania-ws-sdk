@@ -5,9 +5,10 @@
  * @copyright   Copyright (c) 2009-2011 NADEO (http://www.nadeo.com)
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL License 3
  * @author      $Author$:
+ * @version     $Revision$:
  * @date        $Date$:
  */
-require_once dirname(__FILE__).'/../src/trackmania-ws.php';
+require_once __DIR__.'/../src/autoload.php';
 
 echo "Enter your Manialink:\n";
 $manialink = trim(fgets(STDIN));
@@ -19,7 +20,7 @@ $username = trim(fgets(STDIN));
 echo "Enter your API password:\n";
 $password = trim(fgets(STDIN));
 
-$maniahome = new ManiaHome($username, $password, $manialink);
+$maniahome = new \TrackMania\WebServices\ManiaHome($username, $password, $manialink);
 
 try
 {
@@ -64,9 +65,8 @@ try
 		default:
 			echo "INVALID OPTION\n";
 	}
-	echo "Success!\n";
 }
-catch(TrackMania_Exception $e)
+catch(\TrackMania\WebServices\Exception $e)
 {
 	printf('HTTP Response: %d %s', $e->getHTTPStatusCode(),
 		$e->getHTTPStatusMessage());

@@ -1,12 +1,12 @@
-TrackMania Web Services SDK for PHP v1.0
+TrackMania Web Services SDK for PHP v2.0
 ========================================
 
 The TrackMania Web Services SDK lets you easilly interact with our API so that 
 you can retrieve TMF game data such as player information, zones, rankings, 
 manialinks, etc.
 
-This package contains the PHP SDK (as a single PHP file for easy integration in
-your projects) as well as a some examples. Everyting is released under the 
+This package contains the PHP SDK as well as a some examples. Everyting is 
+released under the 
 GNU LESSER GENERAL PUBLIC LICENSE Version 3.
 
 
@@ -23,9 +23,9 @@ Basic example
 -------------
 
 <?php
-require_once '/path/to/trackmania-ws.php';
+require_once '/path/to/autoload.php';
 
-$tmPlayers = new TrackMania_Players('your_api_username', 'your_api_password');
+$tmPlayers = new \TrackMania\WebServices\Players('your_api_username', 'your_api_password');
 $player = $tmPlayers->get('gou1');
 
 var_dump($player);
