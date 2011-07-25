@@ -133,11 +133,11 @@ abstract class HTTPClient
 	{
 		if(!function_exists('curl_init'))
 		{
-			trigger_error('You must activate the CURL PHP extension.');
+			trigger_error('You must activate the CURL PHP extension.', E_USER_ERROR);
 		}
 		if(!function_exists('json_encode'))
 		{
-			trigger_error('You must activate the JSON PHP extension.');
+			trigger_error('You must activate the JSON PHP extension.', E_USER_ERROR);
 		}
 
 		// TODO Try to load the credentials from a ManiaLib config class for easy inclusion in ManiaLib projects
@@ -300,7 +300,7 @@ abstract class HTTPClient
 			{
 				if($this->unserializeCallback)
 				{
-					$responseBody = call_user_func($this->unserializeCallback, $data);
+					$responseBody = call_user_func($this->unserializeCallback, $responseBody);
 				}
 				if(is_object($responseBody))
 				{
