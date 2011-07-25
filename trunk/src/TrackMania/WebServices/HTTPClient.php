@@ -17,7 +17,7 @@ namespace TrackMania\WebServices;
  */
 abstract class HTTPClient
 {
-	const VERSION = '2.0a';
+	const VERSION = '2.0b2';
 
 	private static $HTTPStatusCodes = array(
 		100 => 'Continue',
