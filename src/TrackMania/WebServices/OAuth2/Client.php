@@ -255,7 +255,7 @@ abstract class Client extends \TrackMania\WebServices\HTTPClient
 			'redirect_uri' => $redirectURI,
 			'grant_type' => 'authorization_code',
 			'code' => $authorizationCode,
-			));
+			), '', '&');
 
 		// FIXME OAuth2 Handle known errors
 		$response = $this->execute('POST', self::TOKEN_PATH, array($params));
