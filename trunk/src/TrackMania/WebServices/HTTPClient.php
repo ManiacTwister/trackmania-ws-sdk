@@ -141,7 +141,7 @@ abstract class HTTPClient
 		}
 
 		// TODO Try to load the credentials from a ManiaLib config class for easy inclusion in ManiaLib projects
-		
+
 		$this->username = $username;
 		$this->password = $password;
 	}
