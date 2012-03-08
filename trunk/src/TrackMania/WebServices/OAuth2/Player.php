@@ -66,7 +66,7 @@ class Player extends Client
 	 */
 	function getBuddies()
 	{
-		return $this->execute('GET', '/player/buddies/');
+		return $this->executeOAuth2('GET', '/player/buddies/');
 	}
 
 	/**
@@ -79,7 +79,7 @@ class Player extends Client
 	 */
 	function getEmail()
 	{
-		return $this->execute('GET', '/player/email/');
+		return $this->executeOAuth2('GET', '/player/email/');
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Player extends Client
 	 */
 	function isOnline()
 	{
-		return $this->execute('GET', '/player/online/');
+		return $this->executeOAuth2('GET', '/player/online/');
 	}
 
 }
